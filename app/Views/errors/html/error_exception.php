@@ -28,7 +28,7 @@ $errorId = uniqid('error', true);
             <p>
                 <?= nl2br(esc($exception->getMessage())) ?>
                 <a href="https://www.duckduckgo.com/?q=<?= urlencode($title . ' ' . preg_replace('#\'.*\'|".*"#Us', '', $exception->getMessage())) ?>"
-                   rel="noreferrer" target="_blank">search &rarr;</a>
+                   rel="noreferrer" target="_blank">buscar &rarr;</a>
             </p>
         </div>
     </div>
