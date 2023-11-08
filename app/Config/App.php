@@ -175,4 +175,13 @@ class App extends BaseConfig
      * @see http://www.w3.org/TR/CSP/
      */
     public bool $CSPEnabled = false;
+
+    
+    // CSRF settings
+    public $CSRFProtection = true;
+    public $CSRFTokenName = 'csrf_token';
+    public $CSRFHeaderName = 'X-CSRF-TOKEN';
+    public $CSRFExpire = 7200;
+    public $CSRFRegenerate = true;
+    public $CSRFExcludeURIs = [];
 }

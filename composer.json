@@ -20,7 +20,7 @@
     },
     "autoload": {
         "exclude-from-classmap": [
-            "**/Database/Migrations/**"
+            "**/Database/M`i`grations/**"
         ]
     },
     "autoload-dev": {

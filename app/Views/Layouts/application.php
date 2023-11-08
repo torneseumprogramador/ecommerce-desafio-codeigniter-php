@@ -9,6 +9,7 @@
 
     <!-- STYLES -->
 
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -35,6 +36,28 @@
 </header>
 
 <main>
+    <?php $session = session() ?>
+
+    <?php if ($session->getFlashdata('success')): ?>
+    <div class="alert alert-success">
+        <?= $session->getFlashdata('success') ?>
+    </div>
+    <?php endif; ?>
+
+    <?php if ($session->getFlashdata('error')): ?>
+    <div class="alert alert-danger">
+        <?= $session->getFlashdata('error') ?>
+    </div>
+    <?php endif; ?>
+
+    <?php if ($session->getFlashdata('errors')): ?>
+    <div class="alert alert-danger">
+        <?php foreach ($session->getFlashdata('errors') as $error): ?>
+            <div><?= esc($error) ?></div>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
+
     <?= $this->renderSection('content') ?>
 </main>
 
