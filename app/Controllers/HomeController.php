@@ -7,7 +7,7 @@ class HomeController extends BaseController
     public function index(): string
     {
         $jsonHome = [
-            "mensagem" => "Bem vindo a API Zend/Laminas",
+            "mensagem" => "Bem vindo a API com CodeIginiter",
             "endpoints" => [
                 "clientes" => [
                     "GET" => "/api/clientes",
