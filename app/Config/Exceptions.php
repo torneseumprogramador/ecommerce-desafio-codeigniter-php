@@ -8,6 +8,9 @@ use CodeIgniter\Debug\ExceptionHandlerInterface;
 use Psr\Log\LogLevel;
 use Throwable;
 
+use CodeIgniter\HTTP\Response;
+use CodeIgniter\HTTP\ResponseInterface;
+
 /**
  * Setup how the exception handler works.
  */
@@ -99,6 +102,26 @@ class Exceptions extends BaseConfig
      */
     public function handler(int $statusCode, Throwable $exception): ExceptionHandlerInterface
     {
-        return new ExceptionHandler($this);
+        // if($statusCode != 500){
+        //     return new ExceptionHandler($this);
+        // }
+
+        header('Content-Type: application/json');
+        http_response_code($statusCode);
+
+        $messages = [
+            'error' => $exception->getMessage(),
+        ];
+
+        if($statusCode == 500){
+            $messages['backtrace'] = $exception->getTraceAsString();
+        }
+
+        echo json_encode([
+            'status'   => $statusCode,
+            'messages' => $messages,
+        ]);
+
+        exit;
     }
 }
